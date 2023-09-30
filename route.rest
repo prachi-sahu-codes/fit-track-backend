@@ -1,5 +1,4 @@
 
-
 POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
@@ -19,3 +18,67 @@ GET http://localhost:3000/auth/
 ###
 
 GET http://localhost:3000/auth/65183420af0ffe32989c3430
+
+###
+
+GET http://localhost:3000/exercises/65183420af0ffe32989c3430
+
+###
+
+POST http://localhost:3000/exercises
+Content-Type: application/json
+
+{
+    "userId": "65183420af0ffe32989c3430",
+    "name":"Running",
+    "duration":30,
+    "exerciseType": "running"
+}
+
+###
+
+DELETE http://localhost:3000/exercises/651874cfc67da2e5a4857fa2
+
+###
+
+GET http://localhost:3000/goals/65183420af0ffe32989c3430
+
+###
+
+POST http://localhost:3000/goals
+Content-Type: application/json
+
+{
+    "userId": "65183420af0ffe32989c3430",
+    "name": "Weight Loss",
+    "description": "Losing weight and getting lean body.",
+    "targetDate": "2023-12-31",
+    "targetCalories":1500,
+    "status": "In Progress"
+}
+
+###
+
+DELETE http://localhost:3000/goals/651882131be00595f588f20f
+
+###
+
+GET http://localhost:3000/foods/65183420af0ffe32989c3430
+
+###
+
+POST http://localhost:3000/foods
+Content-Type: application/json
+
+{
+    "userId": "65183420af0ffe32989c3430",
+    "name": "Grilled Chicken Salad",
+    "calories": 350,
+    "protein": 25,
+    "carbohydrates": 10,
+    "fat": 15
+}
+
+###
+
+DELETE http://localhost:3000/foods/651882b01be00595f588f214
