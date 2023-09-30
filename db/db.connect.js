@@ -1,6 +1,4 @@
-
-
-const mongoose =  require("mongoose");
+const mongoose = require("mongoose");
 
 const mongoURI = process.env.MONGODB;
 
@@ -11,11 +9,11 @@ const initializeDatabase = async () => {
       useUnifiedTopology: true,
     });
     if (connection) {
-      console.log('Connected Successfully');
+      console.log("Connected Successfully");
     }
   } catch (error) {
-    console.log('Connection Failed:', error);
+    console.log("Connection Failed:", error);
   }
-}
+};
 
 module.exports = { initializeDatabase };

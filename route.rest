@@ -1,0 +1,21 @@
+
+
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+    "email": "prachi123@gmail.com",
+    "password": "prachi123",
+    "profilePicture": "https://i.imgur.com/HpAYaw9.jpg",
+    "username": "prachi",
+    "phoneNumber": 1231231231,
+    "address": "123 colony, main road"
+}
+
+###
+
+GET http://localhost:3000/auth/
+
+###
+
+GET http://localhost:3000/auth/65183420af0ffe32989c3430

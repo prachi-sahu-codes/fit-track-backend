@@ -1,18 +1,36 @@
-// const mongoose = require("mongoose");
-require('dotenv').config();
+require("dotenv").config();
 
 const express = require("express");
 const app = express();
+const cors = require("cors");
+const helmet = require("helmet");
 const { initializeDatabase } = require("./db/db.connect");
 
 initializeDatabase();
 
+const authRouter = require("./routes/auth.route");
+const userRouter = require("./routes/user.route");
+
 app.use(express.json());
 
-const PORT = process.env.PORT || 3000;
+// app.use(cors());
+
+// app.use(helmet());
 
 app.get("/", (req, res) => {
   res.send("FitTrack Backend!!");
 });
+
+const authVerify = require("./middlewares/authVerify.middleware");
+const errorHandler = require("./middlewares/errorHandler.middleware");
+const routeNotFound = require("./middlewares/routeNotFound.middleware");
+
+app.use("/auth", authRouter);
+app.use("/users", authVerify, userRouter);
+
+app.use(errorHandler);
+app.use(routeNotFound);
+
+const PORT = process.env.PORT || 3000;
 
 app.listen(3000, () => console.log("Server Started"));
