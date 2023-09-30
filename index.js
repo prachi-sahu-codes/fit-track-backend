@@ -16,9 +16,9 @@ const foodRouter = require("./routes/food.route");
 
 app.use(express.json());
 
-// app.use(cors());
+app.use(cors());
 
-// app.use(helmet());
+app.use(helmet());
 
 app.get("/", (req, res) => {
   res.send("FitTrack Backend!!");
