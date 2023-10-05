@@ -32,7 +32,7 @@ Content-Type: application/json
     "userId": "65183420af0ffe32989c3430",
     "name":"Running",
     "duration":30,
-    "exerciseType": "running"
+    "exerciseType": "climbing"
 }
 
 ###

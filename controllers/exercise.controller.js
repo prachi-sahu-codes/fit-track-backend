@@ -1,12 +1,24 @@
 const Exercise = require("../models/exercise.model");
 
-const getAllExercise = async (userId) => {
+const getAllExercise = async () => {
+  try {
+    const allExercise = await Exercise.find({
+      userId: "651ec1c5aebafce43c05612c",
+    });
+    console.log(allExercise);
+    return allExercise;
+  } catch (error) {
+    console.log("Error in getting all exercise data");
+  }
+};
+
+const getUserExercise = async (userId) => {
   try {
     const allExercise = await Exercise.find({ userId });
     console.log(allExercise);
     return allExercise;
   } catch (error) {
-    console.log("Error in getting all exercise data");
+    console.log("Error in getting user's exercise data");
   }
 };
 
@@ -39,4 +51,9 @@ const deleteExercise = async (exerciseId) => {
   }
 };
 
-module.exports = { getAllExercise, createExercise, deleteExercise };
+module.exports = {
+  getAllExercise,
+  getUserExercise,
+  createExercise,
+  deleteExercise,
+};

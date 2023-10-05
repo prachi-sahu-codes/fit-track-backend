@@ -1,12 +1,22 @@
 const Food = require("../models/food.model");
 
-const getAllFoodData = async (userId) => {
+const getAllFoodData = async () => {
+  try {
+    const allFoodData = await Food.find({ userId: "651ec1c5aebafce43c05612c" });
+    console.log(allFoodData);
+    return allFoodData;
+  } catch (error) {
+    console.log("Error in getting all food data");
+  }
+};
+
+const getUserFoodData = async (userId) => {
   try {
     const allFoodData = await Food.find({ userId });
     console.log(allFoodData);
     return allFoodData;
   } catch (error) {
-    console.log("Error in getting all food data");
+    console.log("Error in getting user's food data");
   }
 };
 
@@ -39,4 +49,9 @@ const deleteFoodData = async (foodDataId) => {
   }
 };
 
-module.exports = { getAllFoodData, createFoodData, deleteFoodData };
+module.exports = {
+  getAllFoodData,
+  getUserFoodData,
+  createFoodData,
+  deleteFoodData,
+};

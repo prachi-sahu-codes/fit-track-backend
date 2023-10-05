@@ -2,17 +2,30 @@ const express = require("express");
 const foodRouter = express.Router();
 const {
   getAllFoodData,
+  getUserFoodData,
   createFoodData,
   deleteFoodData,
 } = require("../controllers/food.controller");
 
-foodRouter.get("/:userId", async (req, res) => {
+foodRouter.get("/", async (req, res) => {
   try {
-    const { userId } = req.params;
     const data = await getAllFoodData(userId);
     if (data) {
       console.log(data);
       res.status(201).json({ message: "All foods data:", data });
+    }
+  } catch (error) {
+    res.status(500).json({ error: "Error in getting foods data" });
+  }
+});
+
+foodRouter.get("/:userId", async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const data = await getUserFoodData(userId);
+    if (data) {
+      console.log(data);
+      res.status(201).json({ message: "User's food data:", data });
     }
   } catch (error) {
     res.status(500).json({ error: "Error in getting foods data" });
