@@ -18,6 +18,9 @@ const foodSchema = new mongoose.Schema({
   protein: Number,
   carbohydrates: Number,
   fat: Number,
+},
+{
+  timestamps: true,
 });
 
 const Food = mongoose.model("Food", foodSchema);
