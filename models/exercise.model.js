@@ -29,7 +29,7 @@ const exerciseSchema = new mongoose.Schema(
         "hiking",
         "jump_rope",
         "aerobics",
-        "weightlifting",
+        "weight_lifting",
         "tennis",
         "basketball",
         "soccer",
