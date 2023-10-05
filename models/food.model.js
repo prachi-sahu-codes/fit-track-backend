@@ -21,8 +21,8 @@ const foodSchema = new mongoose.Schema(
     fat: Number,
     category: {
       type: String,
-      enum: ["fruit", "vegetable", "dish"],
-      default: "dish",
+      enum: ["Fruit", "Vegetable", "Dish"],
+      default: "Dish",
     },
   },
   {
