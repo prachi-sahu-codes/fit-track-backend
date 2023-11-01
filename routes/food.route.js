@@ -53,7 +53,7 @@ foodRouter.post("/:foodDataId", async (req, res) => {
     const updatedFood = await updateFoodData(foodDataId, foodData);
     console.log(updatedFood);
     if (updatedFood) {
-      res.status(204).json({ message: "Food data updated", data: updatedFood });
+      res.status(201).json({ message: "Food data updated", data: updatedFood });
     } else {
       res.status(401).json({ error: "Error in updating food data!" });
     }

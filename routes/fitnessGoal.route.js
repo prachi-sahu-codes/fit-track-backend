@@ -44,7 +44,7 @@ goalRouter.post("/:fitnessGoalId", async (req, res) => {
     console.log(updatedGoal);
     if (updatedGoal) {
       res
-        .status(204)
+        .status(201)
         .json({ message: "Fitness goal data updated", data: updatedGoal });
     } else {
       res.status(401).json({ error: "Error in updating fitness goal data!" });

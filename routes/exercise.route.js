@@ -56,7 +56,7 @@ exerciseRouter.post("/:exerciseId", async (req, res) => {
     console.log(updatedExercise);
     if (updatedExercise) {
       res
-        .status(204)
+        .status(201)
         .json({ message: "Exercise data updated", data: updatedExercise });
     } else {
       res.status(401).json({ error: "Error in updating exercise data!" });
