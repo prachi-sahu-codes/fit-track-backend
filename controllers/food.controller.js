@@ -35,6 +35,22 @@ const createFoodData = async (foodData) => {
   }
 };
 
+const updateFoodData = async (foodDataId, foodData) => {
+  try {
+    const foundFood = await Food.findByIdAndUpdate(foodDataId, foodData, {
+      new: true,
+      runValidators: true,
+    });
+    if (foundFood) {
+      return foundFood;
+    } else {
+      console.log("Food Data not found");
+    }
+  } catch (error) {
+    console.log("Error in updating food data", error);
+  }
+};
+
 const deleteFoodData = async (foodDataId) => {
   try {
     const deletedFoodData = await Food.findByIdAndDelete(foodDataId);
@@ -53,5 +69,6 @@ module.exports = {
   getAllFoodData,
   getUserFoodData,
   createFoodData,
+  updateFoodData,
   deleteFoodData,
 };

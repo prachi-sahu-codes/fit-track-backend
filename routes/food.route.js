@@ -4,6 +4,7 @@ const {
   getAllFoodData,
   getUserFoodData,
   createFoodData,
+  updateFoodData,
   deleteFoodData,
 } = require("../controllers/food.controller");
 
@@ -42,6 +43,22 @@ foodRouter.post("/", async (req, res) => {
     }
   } catch (error) {
     res.status(500).json({ error: "Food data not added!" });
+  }
+});
+
+foodRouter.post("/:foodDataId", async (req, res) => {
+  try {
+    const { foodDataId } = req.params;
+    const foodData = req.body;
+    const updatedFood = await updateFoodData(foodDataId, foodData);
+    console.log(updatedFood);
+    if (updatedFood) {
+      res.status(204).json({ message: "Food data updated", data: updatedFood });
+    } else {
+      res.status(401).json({ error: "Error in updating food data!" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: "Food data not updated!" });
   }
 });
 

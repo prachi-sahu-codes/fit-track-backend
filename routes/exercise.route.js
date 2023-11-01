@@ -4,6 +4,7 @@ const {
   getAllExercise,
   getUserExercise,
   createExercise,
+  updateExercise,
   deleteExercise,
 } = require("../controllers/exercise.controller");
 
@@ -44,6 +45,24 @@ exerciseRouter.post("/", async (req, res) => {
     }
   } catch (error) {
     res.status(500).json({ error: "Exercise data not added!" });
+  }
+});
+
+exerciseRouter.post("/:exerciseId", async (req, res) => {
+  try {
+    const { exerciseId } = req.params;
+    const exerciseData = req.body;
+    const updatedExercise = await updateExercise(exerciseId, exerciseData);
+    console.log(updatedExercise);
+    if (updatedExercise) {
+      res
+        .status(204)
+        .json({ message: "Exercise data updated", data: updatedExercise });
+    } else {
+      res.status(401).json({ error: "Error in updating exercise data!" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: "Exercise data not updated!" });
   }
 });
 

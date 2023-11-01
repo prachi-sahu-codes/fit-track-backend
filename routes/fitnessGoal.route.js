@@ -3,6 +3,7 @@ const goalRouter = express.Router();
 const {
   getAllFitnessGoal,
   createFitnessGoal,
+  updateFitnessGoal,
   deleteFitnessGoal,
 } = require("../controllers/fitnessGoal.controller");
 
@@ -23,17 +24,33 @@ goalRouter.post("/", async (req, res) => {
   try {
     const fitnessGoalData = await createFitnessGoal(req.body);
     if (fitnessGoalData) {
-      res
-        .status(201)
-        .json({
-          message: "New fitness goal data added",
-          data: fitnessGoalData,
-        });
+      res.status(201).json({
+        message: "New fitness goal data added",
+        data: fitnessGoalData,
+      });
     } else {
       res.status(401).json({ error: "Error in adding fitness goal data!" });
     }
   } catch (error) {
     res.status(500).json({ error: "fitness goal data not added!" });
+  }
+});
+
+goalRouter.post("/:fitnessGoalId", async (req, res) => {
+  try {
+    const { fitnessGoalId } = req.params;
+    const fitnessGoalData = req.body;
+    const updatedGoal = await updateFitnessGoal(fitnessGoalId, fitnessGoalData);
+    console.log(updatedGoal);
+    if (updatedGoal) {
+      res
+        .status(204)
+        .json({ message: "Fitness goal data updated", data: updatedGoal });
+    } else {
+      res.status(401).json({ error: "Error in updating fitness goal data!" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: "Fitness goal data not updated!" });
   }
 });
 

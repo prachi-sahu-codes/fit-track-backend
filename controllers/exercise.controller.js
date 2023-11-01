@@ -30,10 +30,27 @@ const createExercise = async (exerciseData) => {
       console.log("New exercise saved", savedExercise);
       return savedExercise;
     } else {
-      console.log("Exercise Data not found", error);
+      console.log("Exercise Data not found");
     }
   } catch (error) {
     console.log("Error in creating new exercise", error);
+  }
+};
+
+const updateExercise = async (exerciseId, exerciseData) => {
+  try {
+    const foundExercise = await Exercise.findByIdAndUpdate(
+      exerciseId,
+      exerciseData,
+      { new: true, runValidators: true }
+    );
+    if (foundExercise) {
+      return foundExercise;
+    } else {
+      console.log("Exercise Data not found");
+    }
+  } catch (error) {
+    console.log("Error in updating exercise", error);
   }
 };
 
@@ -55,5 +72,6 @@ module.exports = {
   getAllExercise,
   getUserExercise,
   createExercise,
+  updateExercise,
   deleteExercise,
 };

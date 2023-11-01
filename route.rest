@@ -37,6 +37,17 @@ Content-Type: application/json
 
 ###
 
+POST http://localhost:3000/exercises/6518763238b750834c3740c0
+Content-Type: application/json
+
+{
+    "name":"Dancing",
+    "duration":130,
+    "exerciseType": "climbing"
+}
+
+###
+
 DELETE http://localhost:3000/exercises/651874cfc67da2e5a4857fa2
 
 ###
